@@ -13,6 +13,16 @@ def listar_empleados() -> list:
     return [Empleado.from_row(fila) for fila in filas]
 
 
+def actualizar_salario(correo_coorporativo, nuevo_salario):
+    conn = get_connection()
+    cursor = conn.cursor()
+    cursor.execute("UPDATE empleados_rh SET salario = %s where correo_coorporativo = %s", (nuevo_salario, correo_coorporativo))
+    conn.commit()
+    afectadas = cursor.rowcount
+    cursor.close()
+    conn.close()
+    return afectadas > 0
+
 if __name__ == "__main__":
-    print("Listar empleados \n")
-    print(listar_empleados())
+    print("Actualizar Salario \n")
+    print(actualizar_salario("felipe@meta.com",11000.0))
