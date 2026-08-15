@@ -25,4 +25,4 @@ def actualizar_salario(correo_coorporativo, nuevo_salario):
 
 if __name__ == "__main__":
     print("Actualizar Salario \n")
-    print(actualizar_salario("felipe@meta.com",11000.0))
+    print(actualizar_salario("pedro@meta.com",11000.0))
